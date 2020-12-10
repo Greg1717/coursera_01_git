@@ -1,0 +1,81 @@
+---
+title: "Coursera Notes"
+output: html_notebook
+---
+
+# Github
+
+code to send through the shell
+git remote add origin git@github.com:Greg1717/coursera_01_git.git
+git push -u origin master
+
+... as a result I got following error message... 
+
+Warning: Permanently added the RSA host key for IP address '140.82.121.4' to the list of known hosts.
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Ellyptic@Ellyptics-MBP coursera_01_git %
+
+
+## Missing SSH key
+
+"Help, I keep getting a 'Permission Denied (publickey)' error when I push!"
+
+This means, on your local machine, you haven't made any SSH keys. Not to worry. Here's how to fix:
+
+- Open git bash (Use the Windows search. To find it, type "git bash") or the **Mac Terminal**. Pro Tip: You can use any *nix based command prompt (but not the default Windows Command Prompt!)
+- Type **cd ~/.ssh**. This will take you to the root directory for Git (Likely C:\Users\[YOUR-USER-NAME]\.ssh\ on Windows)
+- Within the .ssh folder, there should be these two files: **id_rsa** and **id_rsa**.pub. These are the files that tell your computer how to communicate with GitHub, BitBucket, or any other Git based service. Type **ls** to see a directory listing. If those two files don't show up, proceed to the next step. NOTE: Your SSH keys must be named **id_rsa** and **id_rsa.pub** in order for Git, GitHub, and BitBucket to recognize them by default.
+- To create the SSH keys, type **ssh-keygen -t rsa -C "gergely_horvath@icloud.com"**. This will create both **id_rsa** and **id_rsa.pub** files.
+
+***
+The last point above created following output in the terminal:
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/Ellyptic/.ssh/id_rsa): id_rsa
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in id_rsa.
+Your public key has been saved in id_rsa.pub.
+The key fingerprint is:
+SHA256:5RqMwx/wE8lQsfXKOIGdbSxkc7eXes1RZeq2N5KI/pI gergely_horvath@icloud.com
+The key's randomart image is:
++---[RSA 3072]----+
+|      ..*.o .   =|
+|       B X o . +.|
+|      o X = o +. |
+|     . = X . + o.|
+|      + S + . + o|
+|       o *. .o.. |
+|        o... o...|
+|        .E    ...|
+|         .o.     |
++----[SHA256]-----+
+***
+
+- Now, go and **open id_rsa.pub** in your favorite text editor (you can do this via Windows Explorer or the OSX Finder if you like, typing open . will open the folder).
+- Copy the contents--exactly as it appears, with no extra spaces or lines--of id_rsa.pub and paste it into GitHub and/or BitBucket under the Account Settings > SSH Keys. NOTE: I like to give the SSH key a descriptive name, usually with the name of the workstation I'm on along with the date.
+- Now that you've added your public key to Github and/or BitBucket, try to git push again and see if it works. It should!
+
+
+
+
+
+
+<!-- This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.  -->
+
+<!-- Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*.  -->
+
+<!-- ```{r} -->
+<!-- plot(cars) -->
+<!-- ``` -->
+
+<!-- Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*. -->
+
+<!-- When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).  -->
+
+<!-- The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed. -->
+
